@@ -1,18 +1,18 @@
 @{
 # Version number of this module.
-moduleVersion = '4.2.0.0'
+moduleVersion = '0.0.1'
 
 # ID used to uniquely identify this module
 GUID = '9FECD4F6-8F02-4707-99B3-539E940E9FF5'
 
 # Author of this module
-Author = 'Microsoft Corporation'
+Author = 'Dsc Community'
 
 # Company or vendor of this module
-CompanyName = 'Microsoft Corporation'
+CompanyName = 'Dsc Community'
 
 # Copyright statement for this module
-Copyright = '(c) 2019 Microsoft Corporation. All rights reserved.'
+Copyright = 'Copyright the DSC Community contributors. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'The ActiveDirectoryDsc module contains DSC resources for deployment and configuration of Active Directory.
@@ -52,34 +52,21 @@ PrivateData = @{
         Tags = @('DesiredStateConfiguration', 'DSC', 'DSCResourceKit', 'DSCResource')
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/PowerShell/ActiveDirectoryDsc/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/dsccommunity/ActiveDirectoryDsc/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/PowerShell/ActiveDirectoryDsc'
+        ProjectUri = 'https://github.com/dsccommunity/ActiveDirectoryDsc'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://dsccommunity.org/images/DSC_Logo_300p.png'
 
         # ReleaseNotes of this module
-        ReleaseNotes = '- Changes to ActiveDirectoryDsc
-  - Resolved custom Script Analyzer rules that was added to the test framework.
-  - Resolve style guideline violations for hashtables ([issue 516](https://github.com/PowerShell/ActiveDirectoryDsc/issues/516)).
-- Changes to ADReplicationSite
-  - Added "Description" attribute parameter ([issue 500](https://github.com/PowerShell/ActiveDirectoryDsc/issues/500)).
-  - Added Integration testing ([issue 355](https://github.com/PowerShell/ActiveDirectoryDsc/issues/355)).
-  - Correct value returned for RenameDefaultFirstSiteName ([issue 502](https://github.com/PowerShell/ActiveDirectoryDsc/issues/502)).
-- Changes to ADReplicationSubnet
-  - Added "Description" attribute parameter ([issue 503](https://github.com/PowerShell/ActiveDirectoryDsc/issues/500))
-  - Added Integration testing ([issue 357](https://github.com/PowerShell/ActiveDirectoryDsc/issues/357))
-- Changes to ADReplicationSiteLink
-  - Added Integration testing ([issue 356](https://github.com/PowerShell/ActiveDirectoryDsc/issues/356)).
-  - Added ability to set "Options" such as Change Notification Replication ([issue 504](https://github.com/PowerShell/ActiveDirectoryDsc/issues/504)).
-- Changes to ActiveDirectoryDsc.Common
-  - Fix `Test-DscPropertyState` Failing when Comparing $Null and Arrays. ([issue 513](https://github.com/PowerShell/ActiveDirectoryDsc/issues/513))
+        ReleaseNotes = ''
 
-'
+        # Set to a prerelease string value if the release should be a prerelease.
+        Prerelease = ''
 
-    } # End of PSData hashtable
+      } # End of PSData hashtable
 
 } # End of PrivateData hashtable
 }
