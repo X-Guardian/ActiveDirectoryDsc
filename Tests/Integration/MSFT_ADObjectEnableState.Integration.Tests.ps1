@@ -1,6 +1,6 @@
-if ($env:APPVEYOR -eq $true)
+if ($env:CI -eq $true)
 {
-    Write-Warning -Message 'Integration test is not supported in AppVeyor.'
+    Write-Warning -Message 'Integration test is not supported in CI.'
     return
 }
 
