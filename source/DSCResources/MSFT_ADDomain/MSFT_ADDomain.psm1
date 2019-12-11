@@ -495,11 +495,6 @@ function Set-TargetResource
         Install-ADDSForest or Install-ADDSDomains.
     #>
     [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '')]
-    <#
-        Suppressing this rule because $global:DSCMachineStatus is only set,
-        never used (by design of Desired State Configuration).
-    #>
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '', Scope='Function', Target='DSCMachineStatus')]
     [CmdletBinding()]
     param
     (
@@ -640,6 +635,8 @@ function Set-TargetResource
             Signal to the LCM to reboot the node to compensate for the one we
             suppressed from Install-ADDSForest/Install-ADDSDomain.
         #>
+        [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '',
+            Justification = 'Set LCM DSCMachineStatus to indicate reboot required')]
         $global:DSCMachineStatus = 1
     }
 } #end function Set-TargetResource

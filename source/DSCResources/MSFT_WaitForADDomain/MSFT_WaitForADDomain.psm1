@@ -259,11 +259,6 @@ function Set-TargetResource
         a reboot if the domain name cannot be found withing the timeout period.
     #>
     [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '')]
-    <#
-        Suppressing this rule because $global:DSCMachineStatus is only set,
-        never used (by design of Desired State Configuration).
-    #>
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '', Scope='Function', Target='DSCMachineStatus')]
     [CmdletBinding()]
     param
     (
@@ -388,6 +383,8 @@ function Set-TargetResource
                         $script:localizedData.RestartWasRequested -f $currentRestartCount, $RestartCount
                     )
 
+                    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '',
+                    Justification = 'Set LCM DSCMachineStatus to indicate reboot required')]
                     $global:DSCMachineStatus = 1
                 }
             }
