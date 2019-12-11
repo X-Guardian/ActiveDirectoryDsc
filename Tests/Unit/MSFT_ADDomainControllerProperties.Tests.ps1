@@ -27,7 +27,7 @@ try
     InModuleScope $script:dscResourceName {
         $mockDefaultParameters = @{
             IsSingleInstance = 'Yes'
-            Verbose = $true
+            Verbose = $false
         }
 
         Describe 'MSFT_ADDomainControllerProperties\Get-TargetResource' -Tag 'Get' {

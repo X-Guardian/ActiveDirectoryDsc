@@ -32,7 +32,7 @@ try
             DomainName = 'contoso.com'
             UserName   = 'TestUser'
             Ensure     = 'Present'
-            Verbose    = $true
+            Verbose    = $false
         }
 
         $testAbsentParams = $testPresentParams.Clone()

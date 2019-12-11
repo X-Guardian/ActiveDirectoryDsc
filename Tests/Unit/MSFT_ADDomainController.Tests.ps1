@@ -3,6 +3,8 @@ param ()
 
 Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath '..\TestHelpers\ActiveDirectoryDsc.TestHelper.psm1')
 
+$script:dscModuleName = 'ActiveDirectoryDsc'
+$script:dscResourceName = 'MSFT_ADDomainController'
 function Invoke-TestSetup
 {
     Import-Module -Name DscResource.Test -Force
@@ -16,7 +18,7 @@ function Invoke-TestSetup
 
 function Invoke-TestCleanup
 {
-    Restore-TestEnvironment -TestEnvironment $script:testEnvironment
+   Restore-TestEnvironment -TestEnvironment $script:testEnvironment
 }
 
 # Begin Testing
@@ -45,13 +47,11 @@ try
         $testDefaultParams = @{
             Credential = $testAdminCredential
             SafeModeAdministratorPassword = $testAdminCredential
-            Verbose                       = $true
         }
 
         $testDefaultParamsRODC = @{
             Credential = $testAdminCredential
             SafeModeAdministratorPassword = $testAdminCredential
-            Verbose                       = $true
             ReadOnlyReplica               = $true
             SiteName                      = $correctSiteName
         }

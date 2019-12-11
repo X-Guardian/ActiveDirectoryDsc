@@ -31,7 +31,7 @@ try
         $mockDefaultParameters = @{
             DomainIdentity = 'contoso.com'
             DomainMode = 'Windows2016Domain'
-            Verbose = $true
+            Verbose = $false
         }
 
         Describe 'MSFT_ADDomainFunctionalLevel\Get-TargetResource' -Tag 'Get' {

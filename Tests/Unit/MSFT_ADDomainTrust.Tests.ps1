@@ -41,7 +41,7 @@ try
                     TargetDomainName                    = $mockTargetDomainName
                     TargetCredential = $mockCredential
                     TrustDirection                      = 'Outbound'
-                    Verbose                             = $true
+                    Verbose                             = $false
                 }
             }
 
@@ -235,7 +235,7 @@ try
                     SourceDomainName                    = $mockSourceDomainName
                     TargetDomainName                    = $mockTargetDomainName
                     TargetCredential = $mockCredential
-                    Verbose                             = $true
+                    Verbose                             = $false
                 }
             }
 
@@ -380,7 +380,7 @@ try
                     SourceDomainName                    = $mockSourceDomainName
                     TargetDomainName                    = $mockTargetDomainName
                     TargetCredential = $mockCredential
-                    Verbose                             = $true
+                    Verbose                             = $false
                 }
 
                 $mockGetTargetResource_Absent = {
@@ -602,7 +602,7 @@ try
                     TargetDomainName                    = $mockTargetDomainName
                     TargetCredential = $mockCredential
                     TrustDirection                      = 'Outbound'
-                    Verbose                             = $true
+                    Verbose                             = $false
                 }
             }
 
@@ -1014,7 +1014,7 @@ try
                     TargetDomainName                    = $mockTargetDomainName
                     TargetCredential = $mockCredential
                     TrustType                           = $TrustType
-                    Verbose                             = $true
+                    Verbose                             = $false
                 }
 
                 { Get-TrustSourceAndTargetObject @testParameters } | Should -Not -Throw
