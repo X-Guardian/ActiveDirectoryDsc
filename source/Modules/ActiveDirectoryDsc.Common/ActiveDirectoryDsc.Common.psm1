@@ -1892,7 +1892,7 @@ function Test-DscPropertyState
 function Assert-ADPSProvider
 {
     [CmdletBinding()]
-    param()
+    param ()
 
     $activeDirectoryPSProvider = Get-PSProvider -PSProvider 'ActiveDirectory' -ErrorAction SilentlyContinue
 
