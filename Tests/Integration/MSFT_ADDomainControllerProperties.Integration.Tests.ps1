@@ -1,4 +1,4 @@
-if ($env:CI -eq $true)
+if ($env:TF_BUILD -eq $true)
 {
     Write-Warning -Message 'Integration test is not supported in CI.'
     return
