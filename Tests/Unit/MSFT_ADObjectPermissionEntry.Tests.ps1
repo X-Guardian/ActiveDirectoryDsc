@@ -16,7 +16,7 @@ function Invoke-TestSetup
 
 function Invoke-TestCleanup
 {
-    Restore-TestEnvironment -TestEnvironment $TestEnvironment
+    Restore-TestEnvironment -TestEnvironment $script:testEnvironment
 }
 
 # Begin Testing
@@ -95,13 +95,13 @@ try
                 Mock -CommandName 'Get-Acl' -MockWith $mockGetAclPresent
 
                 It 'Should call "Assert-ADPSDrive" to check AD PS Drive is created' {
-                    $targetResource = Get-TargetResource @testDefaultParameters -Verbose
+                    $targetResource = Get-TargetResource @testDefaultParameters
                     Assert-MockCalled -CommandName Assert-ADPSDrive -Scope It -Exactly -Times 1
                 }
 
                 It 'Should return a "System.Collections.Hashtable" object type' {
                     # Act
-                    $targetResource = Get-TargetResource @testDefaultParameters -Verbose
+                    $targetResource = Get-TargetResource @testDefaultParameters
 
                     # Assert
                     $targetResource | Should -BeOfType [System.Collections.Hashtable]
@@ -109,7 +109,7 @@ try
 
                 It 'Should return a valid result if the ace is present' {
                     # Act
-                    $targetResource = Get-TargetResource @testDefaultParameters -Verbose
+                    $targetResource = Get-TargetResource @testDefaultParameters
 
                     # Assert
                     $targetResource.Ensure                             | Should -Be 'Present'
@@ -128,13 +128,13 @@ try
                 Mock -CommandName 'Get-Acl' -MockWith $mockGetAclAbsent
 
                 It 'Should call "Assert-ADPSDrive" to check AD PS Drive is created' {
-                    $targetResource = Get-TargetResource @testDefaultParameters -Verbose
+                    $targetResource = Get-TargetResource @testDefaultParameters
                     Assert-MockCalled -CommandName Assert-ADPSDrive -Scope It -Exactly -Times 1
                 }
 
                 It 'Should return a valid result if the ace is absent' {
                     # Act
-                    $targetResource = Get-TargetResource @testDefaultParameters -Verbose
+                    $targetResource = Get-TargetResource @testDefaultParameters
 
                     # Assert
                     $targetResource.Ensure                             | Should -Be 'Absent'
@@ -168,7 +168,7 @@ try
 
                 It 'Should return $true if the ace desired state is present' {
                     # Act
-                    $targetResource = Test-TargetResource @testDefaultParameters @testPresentParameters -Verbose
+                    $targetResource = Test-TargetResource @testDefaultParameters @testPresentParameters
 
                     # Assert
                     $targetResource | Should -BeTrue
@@ -216,7 +216,7 @@ try
                 Mock -CommandName 'Set-Acl' -Verifiable
 
                 It 'Should call "Assert-ADPSDrive" to check AD PS Drive is created' {
-                    $targetResource = Get-TargetResource @testDefaultParameters -Verbose
+                    $targetResource = Get-TargetResource @testDefaultParameters
                     Assert-MockCalled -CommandName Assert-ADPSDrive -Scope It -Exactly -Times 1
                 }
 
@@ -235,7 +235,7 @@ try
                 Mock -CommandName 'Set-Acl' -Verifiable
 
                 It 'Should call "Assert-ADPSDrive" to check AD PS Drive is created' {
-                    $targetResource = Get-TargetResource @testDefaultParameters -Verbose
+                    $targetResource = Get-TargetResource @testDefaultParameters
                     Assert-MockCalled -CommandName Assert-ADPSDrive -Scope It -Exactly -Times 1
                 }
 

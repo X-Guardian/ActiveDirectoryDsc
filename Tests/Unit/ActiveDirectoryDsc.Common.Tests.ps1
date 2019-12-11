@@ -916,28 +916,28 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             $testExistingMembers = @('USER1', 'USER2')
             $testMembers = $null
 
-            Test-Members -ExistingMembers $testExistingMembers -Members $testMembers -Verbose | Should -BeFalse
+            Test-Members -ExistingMembers $testExistingMembers -Members $testMembers| Should -BeFalse
         }
 
         It 'Should fail when multiple Members are the wrong members' {
             $testExistingMembers = @('USER1', 'USER2')
             $testMembers = @('USER3', 'USER4')
 
-            Test-Members -ExistingMembers $testExistingMembers -Members $testMembers -Verbose | Should -BeFalse
+            Test-Members -ExistingMembers $testExistingMembers -Members $testMembers | Should -BeFalse
         }
 
         It 'Should fail when multiple MembersToInclude are not present in existing members' {
             $testExistingMembers = @('USER1', 'USER2')
             $testMembersToInclude = @('USER3', 'USER4')
 
-            Test-Members -ExistingMembers $testExistingMembers -MembersToInclude $testMembersToInclude -Verbose | Should -BeFalse
+            Test-Members -ExistingMembers $testExistingMembers -MembersToInclude $testMembersToInclude | Should -BeFalse
         }
 
         It 'Should fail when multiple MembersToExclude are present in existing members' {
             $testExistingMembers = @('USER1', 'USER2')
             $testMembersToExclude = @('USER1', 'USER2')
 
-            Test-Members -ExistingMembers $testExistingMembers -MembersToExclude $testMembersToExclude -Verbose | Should -BeFalse
+            Test-Members -ExistingMembers $testExistingMembers -MembersToExclude $testMembersToExclude | Should -BeFalse
         }
     }
 
@@ -1515,7 +1515,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             }
 
             It 'Should throw the correct error' {
-                { Get-DomainControllerObject -DomainName 'contoso.com' -Verbose } | Should -Throw $localizedString.FailedEvaluatingDomainController
+                { Get-DomainControllerObject -DomainName 'contoso.com' } | Should -Throw $localizedString.FailedEvaluatingDomainController
 
                 Assert-MockCalled -CommandName Get-ADDomainController -Exactly -Times 1 -Scope It
             }
@@ -1530,7 +1530,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             }
 
             It 'Should return $null' {
-                $getDomainControllerObjectResult = Get-DomainControllerObject -DomainName 'contoso.com' -Verbose
+                $getDomainControllerObjectResult = Get-DomainControllerObject -DomainName 'contoso.com'
                 $getDomainControllerObjectResult | Should -BeNullOrEmpty
 
                 Assert-MockCalled -CommandName Get-ADDomainController -Exactly -Times 1 -Scope It
@@ -1546,7 +1546,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             }
 
             It 'Should throw the correct error' {
-                { Get-DomainControllerObject -DomainName 'contoso.com' -Verbose } | Should -Throw $script:localizedData.WasExpectingDomainController
+                { Get-DomainControllerObject -DomainName 'contoso.com' } | Should -Throw $script:localizedData.WasExpectingDomainController
 
                 Assert-MockCalled -CommandName Get-ADDomainController -Exactly -Times 1 -Scope It
             }
@@ -1564,7 +1564,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             }
 
             It 'Should return the correct values for each property' {
-                $getDomainControllerObjectResult = Get-DomainControllerObject -DomainName 'contoso.com' -Verbose
+                $getDomainControllerObjectResult = Get-DomainControllerObject -DomainName 'contoso.com'
 
                 $getDomainControllerObjectResult.Site | Should -Be 'MySite'
                 $getDomainControllerObjectResult.Domain | Should -Be 'contoso.com'
@@ -1590,7 +1590,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             }
 
             It 'Should return the correct values for each property' {
-                $getDomainControllerObjectResult = Get-DomainControllerObject -DomainName 'contoso.com' -Credential $mockAdministratorCredential -Verbose
+                $getDomainControllerObjectResult = Get-DomainControllerObject -DomainName 'contoso.com' -Credential $mockAdministratorCredential
 
                 $getDomainControllerObjectResult.Site | Should -Be 'MySite'
                 $getDomainControllerObjectResult.Domain | Should -Be 'contoso.com'
@@ -1885,7 +1885,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
                     DesiredValue = $null
                 }
 
-                Test-DscPropertyState -Values $mockValues -Verbose | Should -BeTrue
+                Test-DscPropertyState -Values $mockValues | Should -BeTrue
             }
 
             It 'Should return true when evaluating an array, when both values are an empty array' {
@@ -1894,7 +1894,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
                     DesiredValue = @()
                 }
 
-                Test-DscPropertyState -Values $mockValues -Verbose | Should -BeTrue
+                Test-DscPropertyState -Values $mockValues| Should -BeTrue
             }
         }
 
@@ -2195,7 +2195,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             }
 
             It 'Should not throw' {
-                { Assert-ADPSProvider -Verbose } | Should -Not -Throw
+                { Assert-ADPSProvider } | Should -Not -Throw
             }
 
             It 'Should call the expected mocks' {
@@ -2536,7 +2536,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
 
             Context 'When the calling with only the parameter DomainName' {
                 It 'Should not throw and call the correct mocks' {
-                    { Find-DomainController -DomainName $mockDomainName -Verbose } | Should -Not -Throw
+                    { Find-DomainController -DomainName $mockDomainName } | Should -Not -Throw
 
                     Assert-MockCalled -CommandName Get-ADDirectoryContext -ParameterFilter {
                         $Name -eq $mockDomainName `
@@ -2550,7 +2550,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
 
             Context 'When the calling with the parameter SiteName' {
                 It 'Should not throw and call the correct mocks' {
-                    { Find-DomainController -DomainName $mockDomainName -SiteName 'Europe' -Verbose } | Should -Not -Throw
+                    { Find-DomainController -DomainName $mockDomainName -SiteName 'Europe' } | Should -Not -Throw
 
                     Assert-MockCalled -CommandName Get-ADDirectoryContext -ParameterFilter {
                         $Name -eq $mockDomainName `
@@ -2564,7 +2564,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
 
             Context 'When the calling with the parameter Credential' {
                 It 'Should not throw and call the correct mocks' {
-                    { Find-DomainController -DomainName $mockDomainName -Credential $mockAdministratorCredential -Verbose } | Should -Not -Throw
+                    { Find-DomainController -DomainName $mockDomainName -Credential $mockAdministratorCredential } | Should -Not -Throw
 
                     Assert-MockCalled -CommandName Get-ADDirectoryContext -ParameterFilter {
                         $Name -eq $mockDomainName `
@@ -2599,7 +2599,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             }
 
             It 'Should not throw and call the correct mocks' {
-                { Find-DomainController -DomainName $mockDomainName -Verbose } | Should -Not -Throw
+                { Find-DomainController -DomainName $mockDomainName } | Should -Not -Throw
 
                 Assert-MockCalled -Command Find-DomainControllerFindOneWrapper -Exactly -Times 1 -Scope It
                 Assert-MockCalled -Command Write-Verbose -Exactly -Times 1 -Scope It
@@ -2624,7 +2624,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
             }
 
             It 'Should throw the correct error' {
-                { Find-DomainController -DomainName $mockDomainName -Verbose } | Should -Throw $mockErrorMessage
+                { Find-DomainController -DomainName $mockDomainName } | Should -Throw $mockErrorMessage
 
                 Assert-MockCalled -Command Find-DomainControllerFindOneWrapper -Exactly -Times 1 -Scope It
             }
@@ -2659,7 +2659,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
 
             Context 'When the parameter WaitForValidCredentials is not specified' {
                 It 'Should throw the correct error' {
-                    { Find-DomainController -DomainName $mockDomainName -Verbose } | Should -Throw $mockErrorMessage
+                    { Find-DomainController -DomainName $mockDomainName } | Should -Throw $mockErrorMessage
 
                     Assert-MockCalled -Command Find-DomainControllerFindOneWrapper -Exactly -Times 1 -Scope It
                 }
@@ -2667,7 +2667,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
 
             Context 'When the parameter WaitForValidCredentials is set to $false' {
                 It 'Should throw the correct error' {
-                    { Find-DomainController -DomainName $mockDomainName -WaitForValidCredentials:$false -Verbose } | Should -Throw $mockErrorMessage
+                    { Find-DomainController -DomainName $mockDomainName -WaitForValidCredentials:$false } | Should -Throw $mockErrorMessage
 
                     Assert-MockCalled -Command Find-DomainControllerFindOneWrapper -Exactly -Times 1 -Scope It
                 }
@@ -2679,7 +2679,7 @@ InModuleScope 'ActiveDirectoryDsc.Common' {
                 }
 
                 It 'Should not throw an exception' {
-                    { Find-DomainController -DomainName $mockDomainName -WaitForValidCredentials -Verbose } | Should -Not -Throw
+                    { Find-DomainController -DomainName $mockDomainName -WaitForValidCredentials } | Should -Not -Throw
 
                     Assert-MockCalled -Command Find-DomainControllerFindOneWrapper -Exactly -Times 1 -Scope It
                     Assert-MockCalled -CommandName Write-Warning -Exactly -Times 1 -Scope It
