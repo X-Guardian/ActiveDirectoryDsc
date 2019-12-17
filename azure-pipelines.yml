@@ -59,6 +59,7 @@ stages:
               pwsh: false
 
           - task: PublishTestResults@2
+            condition: succeededOrFailed()
             inputs:
               testResultsFormat: 'NUnit'
               testResultsFiles: 'output/testResults/NUnit*.xml'

@@ -93,7 +93,7 @@ try
                 It 'Should return the state as absent' {
                     { Get-TargetResource @getTargetResourceParameters } | Should -Throw $errorMessage
 
-                    Assert-MockCalled -CommandName Get-ADComputer -Exactly -Times 1 -Scope It
+                    Assert-MockCalled -CommandName Get-ADComputer -Exactly -Times 0 -Scope It
                 }
             }
 
