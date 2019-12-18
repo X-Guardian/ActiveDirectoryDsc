@@ -5,7 +5,14 @@ $script:dscResourceName = 'MSFT_WaitForADDomain'
 
 function Invoke-TestSetup
 {
-    Import-Module -Name DscResource.Test -Force
+    try
+    {
+        Import-Module -Name DscResource.Test -Force
+    }
+    catch [System.IO.FileNotFoundException]
+    {
+        throw 'DscResource.Test module dependency not found. Please run ".\build.ps1 -Tasks build" first.'
+    }
 
     $script:testEnvironment = Initialize-TestEnvironment `
         -DSCModuleName $script:dscModuleName `
@@ -20,10 +27,11 @@ function Invoke-TestCleanup
 }
 
 # Begin Testing
+
+Invoke-TestSetup
+
 try
 {
-    Invoke-TestSetup
-
     InModuleScope $script:dscResourceName {
         $mockUserName = 'User1'
         $mockDomainUserCredential = New-Object -TypeName 'System.Management.Automation.PSCredential' -ArgumentList @(

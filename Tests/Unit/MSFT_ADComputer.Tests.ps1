@@ -5,7 +5,14 @@ $script:dscResourceName = 'MSFT_ADComputer'
 
 function Invoke-TestSetup
 {
-    Import-Module -Name DscResource.Test -Force
+    try
+    {
+        Import-Module -Name DscResource.Test -Force
+    }
+    catch [System.IO.FileNotFoundException]
+    {
+        throw 'DscResource.Test module dependency not found. Please run ".\build.ps1 -Tasks build" first.'
+    }
 
     $script:testEnvironment = Initialize-TestEnvironment `
         -DSCModuleName $script:dscModuleName `
@@ -20,10 +27,11 @@ function Invoke-TestCleanup
 }
 
 # Begin Testing
+
+Invoke-TestSetup
+
 try
 {
-    Invoke-TestSetup
-
     InModuleScope $script:dscResourceName {
         # Load stub cmdlets and classes.
         Import-Module (Join-Path -Path $PSScriptRoot -ChildPath 'Stubs\ActiveDirectory_2019.psm1') -Force
@@ -93,7 +101,7 @@ try
                 It 'Should return the state as absent' {
                     { Get-TargetResource @getTargetResourceParameters } | Should -Throw $errorMessage
 
-                    Assert-MockCalled -CommandName Get-ADComputer -Exactly -Times 0 -Scope It
+                    Assert-MockCalled -CommandName Get-ADComputer -Exactly -Times 1 -Scope It
                 }
             }
 
