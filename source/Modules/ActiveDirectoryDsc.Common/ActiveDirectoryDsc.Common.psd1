@@ -18,7 +18,44 @@
     Description       = 'Functions used by the DSC resources in ActiveDirectoryDsc.'
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = @()
+    FunctionsToExport = @(
+        'New-InvalidArgumentException'
+        'New-InvalidOperationException'
+        'New-ObjectNotFoundException'
+        'New-InvalidResultException'
+        'Get-LocalizedData'
+        'Test-DscParameterState'
+        'Start-ProcessWithTimeout'
+        'Assert-Module'
+        'Test-DomainMember'
+        'Get-DomainName'
+        'Resolve-DomainFQDN'
+        'Get-ADObjectParentDN'
+        'Assert-MemberParameters'
+        'Remove-DuplicateMembers'
+        'Test-Members'
+        'ConvertTo-TimeSpan'
+        'ConvertFrom-TimeSpan'
+        'Get-ADCommonParameters'
+        'Test-ADReplicationSite'
+        'ConvertTo-DeploymentForestMode'
+        'ConvertTo-DeploymentDomainMode'
+        'Restore-ADCommonObject'
+        'Get-ADDomainNameFromDistinguishedName'
+        'Add-ADCommonGroupMember'
+        'Get-DomainControllerObject'
+        'Test-IsDomainController'
+        'Convert-PropertyMapToObjectProperties'
+        'Compare-ResourcePropertyState'
+        'Test-DscPropertyState'
+        'Assert-ADPSDrive'
+        'Set-DscADComputer'
+        'New-CimCredentialInstance'
+        'Add-TypeAssembly'
+        'Get-ADDirectoryContext'
+        'Find-DomainController'
+        'Get-CurrentUser'
+    )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
