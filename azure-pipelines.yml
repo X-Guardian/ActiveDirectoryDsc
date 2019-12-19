@@ -1,3 +1,6 @@
+variables:
+  ModuleName: 'ActiveDirectory'
+
 trigger:
   branches:
     include:
@@ -7,7 +10,6 @@ trigger:
     - "v*"
     exclude:
     - "*-*"
-#variables:
 
 stages:
   - stage: Build_artefact
@@ -70,7 +72,7 @@ stages:
             condition: succeededOrFailed()
             inputs:
               codeCoverageTool: 'JaCoCo'
-              pathToSources: 'output'
+              pathToSources: '$(Build.SourcesDirectory)/output/$(ModuleName)'
               summaryFileLocation: 'output/testResults/CodeCov*.xml'
 
   - stage: Deploy
