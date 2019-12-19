@@ -1,5 +1,5 @@
 variables:
-  ModuleName: 'ActiveDirectory'
+  ModuleName: 'ActiveDirectoryDsc'
 
 trigger:
   branches:
