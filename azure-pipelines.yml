@@ -67,8 +67,10 @@ stages:
 
           # Publish code coverage results
           - task: PublishCodeCoverageResults@1
+            condition: succeededOrFailed()
             inputs:
               codeCoverageTool: 'JaCoCo'
+              pathToSources: 'output'
               summaryFileLocation: 'output/testResults/CodeCov*.xml'
 
   - stage: Deploy
