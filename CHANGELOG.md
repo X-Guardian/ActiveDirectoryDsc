@@ -9,7 +9,7 @@
 - ADManagedServiceAccount
   - Added Integration tests.
 - ADKDSKey
-  - Added Integration tests ([issue #351](https://github.com/PowerShell/ActiveDirectoryDsc/issues/351))
+  - Added Integration tests ([issue #351](https://github.com/PowerShell/ActiveDirectoryDsc/issues/351)).
 
 ### Changed
 
