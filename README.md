@@ -7,8 +7,9 @@ These DSC resources allow you to configure new domains, child domains, and high
 availability domain controllers, establish cross-domain trusts and manage users,
 groups and OUs.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## Code of Conduct
+
+This project has adopted this [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Documentation and Examples
 
@@ -19,21 +20,14 @@ out the [ActiveDirectoryDsc wiki](https://github.com/PowerShell/ActiveDirectoryD
 
 ### master
 
-[![Build status](https://ci.appveyor.com/api/projects/status/x9haeb92nw57gjkh/branch/master?svg=true)](https://ci.appveyor.com/project/PowerShell/ActiveDirectoryDsc/branch/master)
-[![codecov](https://codecov.io/gh/PowerShell/ActiveDirectoryDsc/branch/master/graph/badge.svg)](https://codecov.io/gh/PowerShell/ActiveDirectoryDsc/branch/master)
+[![Build Status](https://dev.azure.com/dsccommunity/ActiveDirectoryDsc/_apis/build/status/dsccommunity.ActiveDirectoryDsc?branchName=master)](https://dev.azure.com/dsccommunity/ActiveDirectoryDsc/_build/latest?definitionId={definitionId}&branchName=master)
+![Azure DevOps coverage (branch)](https://img.shields.io/azure-devops/coverage/dsccommunity/ActiveDirectoryDsc/{definitionId}/master)
 
-This is the branch containing the latest release -
-no contributions should be made directly to this branch.
-
-### dev
-
-[![Build status](https://ci.appveyor.com/api/projects/status/x9haeb92nw57gjkh/branch/dev?svg=true)](https://ci.appveyor.com/project/PowerShell/ActiveDirectoryDsc/branch/dev)
-[![codecov](https://codecov.io/gh/PowerShell/ActiveDirectoryDsc/branch/dev/graph/badge.svg)](https://codecov.io/gh/PowerShell/ActiveDirectoryDsc/branch/dev)
-
-This is the development branch
-to which contributions should be proposed by contributors as pull requests.
-This development branch will periodically be merged to the master branch,
-and be released to [PowerShell Gallery](https://www.powershellgallery.com/).
+This is the development branch to which contributions should be proposed by
+contributors as pull requests. For each merge a preview release will be
+deployed to [PowerShell Gallery](https://www.powershellgallery.com/).
+Periodically a release version tag will be pushed which will deploy a
+full release to [PowerShell Gallery](https://www.powershellgallery.com/).
 
 ## Contributing
 
