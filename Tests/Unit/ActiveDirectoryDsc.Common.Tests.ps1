@@ -8,8 +8,6 @@
 #>
 Get-Module -Name 'ActiveDirectoryDsc.Common' -All | Remove-Module -Force
 
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath '..\TestHelpers\ActiveDirectoryDsc.TestHelper.psm1')
-
 #region HEADER
 $script:projectPath = "$PSScriptRoot\..\.." | Convert-Path
 $script:projectName = (Get-ChildItem -Path "$script:projectPath\*\*.psd1" | Where-Object -FilterScript {

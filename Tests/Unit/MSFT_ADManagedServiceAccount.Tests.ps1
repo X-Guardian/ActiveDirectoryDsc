@@ -2,8 +2,6 @@
     Justification = 'False positive on ManagedPasswordPrincipals')]
 param ()
 
-Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath '..\TestHelpers\ActiveDirectoryDsc.TestHelper.psm1')
-
 $script:dscModuleName = 'ActiveDirectoryDsc'
 $script:dscResourceName = 'MSFT_ADManagedServiceAccount'
 
