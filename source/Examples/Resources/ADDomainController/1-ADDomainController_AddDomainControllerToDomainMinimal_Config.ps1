@@ -37,7 +37,7 @@ Configuration ADDomainController_AddDomainControllerToDomainMinimal_Config
         $SafeModePassword
     )
 
-    Import-DscResource -ModuleName PSDscResources
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName ActiveDirectoryDsc
 
     node localhost

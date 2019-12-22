@@ -32,7 +32,7 @@ Configuration ADDomainController_AddDomainControllerUsingInstallDns_Config
         $Credential
     )
 
-    Import-DscResource -ModuleName PSDscResources
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName ActiveDirectoryDsc
 
     node localhost
