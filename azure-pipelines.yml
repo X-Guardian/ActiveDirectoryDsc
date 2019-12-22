@@ -1,6 +1,3 @@
-variables:
-  ModuleName: 'ActiveDirectoryDsc'
-
 trigger:
   branches:
     include:
@@ -10,6 +7,7 @@ trigger:
     - "v*"
     exclude:
     - "*-*"
+#variables:
 
 stages:
   - stage: Build_artefact
@@ -53,6 +51,12 @@ stages:
               artifactName: 'output'
               downloadPath: '$(Build.SourcesDirectory)'
 
+          - powershell: |
+              $repositoryOwner,$repositoryName = $env:BUILD_REPOSITORY_NAME -split '/'
+              echo "##vso[task.setvariable variable=RepositoryOwner;isOutput=true]$repositoryOwner"
+              echo "##vso[task.setvariable variable=RepositoryName;isOutput=true]$repositoryName"
+            name: DscBuildVariable
+
           - task: PowerShell@2
             name: Test
             inputs:
@@ -72,8 +76,8 @@ stages:
             condition: succeededOrFailed()
             inputs:
               codeCoverageTool: 'JaCoCo'
-              pathToSources: '$(Build.SourcesDirectory)/output/$(ModuleName)'
               summaryFileLocation: 'output/testResults/CodeCov*.xml'
+              pathToSources: '$(Build.SourcesDirectory)/output/$(DscBuildVariable.RepositoryName)'
 
   - stage: Deploy
     dependsOn: test_module
