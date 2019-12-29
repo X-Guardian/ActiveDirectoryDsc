@@ -18,6 +18,7 @@
     'DscResource.AnalyzerRules' = 'latest'
     xDscResourceDesigner        = 'latest'
     MarkdownLinkCheck           = 'latest'
+    xFailoverCluster            = '1.14.1'
 
 
     # PSPKI                       = 'latest'

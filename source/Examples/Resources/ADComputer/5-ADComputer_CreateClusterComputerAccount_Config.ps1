@@ -35,7 +35,7 @@ Configuration ADComputer_CreateClusterComputerAccount_Config
     )
 
     Import-DscResource -ModuleName ActiveDirectoryDsc
-    Import-DscResource -ModuleName xFailoverCluster
+    Import-DscResource -ModuleName xFailoverCluster -ModuleVersion '1.14.1'
 
     node localhost
     {
