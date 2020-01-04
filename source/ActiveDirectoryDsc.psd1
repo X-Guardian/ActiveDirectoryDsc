@@ -43,6 +43,31 @@ VariablesToExport = @()
 # Aliases to export from this module
 AliasesToExport = @()
 
+# Dsc Resources to export from this module
+DscResourcesToExport = @(
+    'ADComputer'
+    'ADDomain'
+    'ADDomainController'
+    'ADDomainControllerProperties'
+    'ADDomainDefaultPasswordPolicy'
+    'ADDomainFunctionalLevel'
+    'ADDomainTrust'
+    'ADForestFunctionalLevel'
+    'ADForestProperties'
+    'ADGroup'
+    'ADKDSKey'
+    'ADManagedServiceAccount'
+    'ADObjectEnabledState'
+    'ADObjectPermissionEntry'
+    'ADOptionalFeature'
+    'ADOrganizationalUnit'
+    'ADReplicationSite'
+    'ADReplicationSiteLink'
+    'ADServicePrincipalName'
+    'ADUser'
+    'WaitForADDomain'
+)
+
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
 
@@ -70,23 +95,3 @@ PrivateData = @{
 
 } # End of PrivateData hashtable
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
