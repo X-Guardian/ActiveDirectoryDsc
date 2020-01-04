@@ -60,9 +60,6 @@ Pester: #Passthru, OutputFile, CodeCoverageOutputFile not supported
   - tests/Unit
   # - tests/Integration # ActiveDirectoryDsc Integration tests
   ExcludeTag:
-    - helpQuality
-    - FunctionalQuality
-    - TestQuality
   Tag:
   CodeCoverageThreshold: 85 # Set to 0 to bypass
 
