@@ -1,21 +1,22 @@
 <#PSScriptInfo
-.VERSION 1.0
+.VERSION 1.0.1
 .GUID 63447da7-3fe9-4d03-b680-2129a2e0318f
-.AUTHOR Microsoft Corporation
-.COMPANYNAME Microsoft Corporation
-.COPYRIGHT (c) Microsoft Corporation. All rights reserved.
+.AUTHOR DSC Community
+.COMPANYNAME DSC Community
+.COPYRIGHT DSC Community contributors. All rights reserved.
 .TAGS DSCConfiguration
-.LICENSEURI https://github.com/PowerShell/ActiveDirectoryDsc/blob/master/LICENSE
-.PROJECTURI https://github.com/PowerShell/ActiveDirectoryDsc
-.ICONURI
+.LICENSEURI https://github.com/dsccommunity/<repositoryName>/blob/master/LICENSE
+.PROJECTURI https://github.com/dsccommunity/<repositoryName>
+.ICONURI https://dsccommunity.org/images/DSC_Logo_300p.png
 .EXTERNALMODULEDEPENDENCIES
 .REQUIREDSCRIPTS
 .EXTERNALSCRIPTDEPENDENCIES
 .RELEASENOTES
+Updated author, copyright notice, and URLs.
 .PRIVATEDATA
 #>
 
-#Requires -module ActiveDirectoryDsc
+#Requires -Module ActiveDirectoryDsc
 
 <#
     .DESCRIPTION
