@@ -6,15 +6,42 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'windows-2019'
+stages:
+  - stage: stage1
+    pool:
+      vmImage: 'windows-2019'
 
-container: mcr.microsoft.com/windows/servercore:ltsc2019
+  jobs:
+    - job: hostJob1
+      displayName: Host Job 1
 
-steps:
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      $PSVersionTable
-      Get-ComputerInfo
+      steps:
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: |
+            $PSVersionTable
+            Get-ComputerInfo
+
+    - job: containerJob1
+      displayName: Container Job 1
+
+      container: mcr.microsoft.com/windows/servercore:ltsc2019
+
+      steps:
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: |
+            $PSVersionTable
+            Get-ComputerInfo
+
+    - job: hostJob2
+      displayName: Host Job 2
+
+      steps:
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: |
+            docker ps
