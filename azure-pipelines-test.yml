@@ -38,6 +38,7 @@ stages:
 
       - job: hostJob2
         displayName: Host Job 2
+        dependsOn: containerJob1
 
         steps:
         - task: PowerShell@2
