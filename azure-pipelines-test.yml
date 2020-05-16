@@ -9,7 +9,7 @@ trigger:
 resources:
   containers:
   - container: ltsc2019
-    image: mcr.microsoft.com/windows/servercore
+    image: mcr.microsoft.com/windows/servercore:ltsc2019
 
 stages:
   - stage: stage1
