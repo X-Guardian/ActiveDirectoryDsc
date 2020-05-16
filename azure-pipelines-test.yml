@@ -17,50 +17,44 @@ stages:
       vmImage: 'windows-2019'
 
     jobs:
-      - job: hostJob1
+      - job: Job1
         displayName: Host Job 1
 
         steps:
         - task: PowerShell@2
+          displayName: Host Step 1
+          target: host
           inputs:
             targetType: 'inline'
             script: |
+              docker ps
+              docker images
               $PSVersionTable
               Get-ComputerInfo
             pwsh: true
 
-      - job: containerJob1
-        displayName: Container Job 1
-
-        container: ltsc2019
-
-        steps:
         - task: PowerShell@2
+          displayName: Container Step 1
+          target: 
+            container: ltsc2019
           inputs:
             targetType: 'inline'
             script: |
               $PSVersionTable
               Get-ComputerInfo
 
-      - job: hostJob2
-        displayName: Host Job 2
-        dependsOn: containerJob1
-
-        steps:
         - task: PowerShell@2
+          displayName: Host Step 2
+          target: host
           inputs:
             targetType: 'inline'
             script: 'docker ps'
             pwsh: true
 
-      - job: containerJob2
-        displayName: Container Job 2
-        dependsOn: hostJob2
-
-        container: ltsc2019
-
-        steps:
         - task: PowerShell@2
+          displayName: Container Step 2
+          target:
+            container: ltsc2019
           inputs:
             targetType: 'inline'
             script: |
