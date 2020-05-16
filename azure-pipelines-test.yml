@@ -56,6 +56,7 @@ stages:
 
       - job: containerJob2
         displayName: Container Job 2
+        dependsOn: hostJob2
 
         container: ltsc2019
 
