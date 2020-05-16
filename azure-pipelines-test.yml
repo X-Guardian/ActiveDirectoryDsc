@@ -6,6 +6,11 @@
 trigger:
 - master
 
+resources:
+  containers:
+  - container: ltsc2019
+    image: mcr.microsoft.com/windows/servercore:ltsc2019
+
 stages:
   - stage: stage1
     pool:
@@ -22,11 +27,12 @@ stages:
             script: |
               $PSVersionTable
               Get-ComputerInfo
+            pwsh: true
 
       - job: containerJob1
         displayName: Container Job 1
 
-        container: mcr.microsoft.com/windows/servercore:ltsc2019
+        container: ltsc2019
 
         steps:
         - task: PowerShell@2
@@ -35,6 +41,7 @@ stages:
             script: |
               $PSVersionTable
               Get-ComputerInfo
+            pwsh: true
 
       - job: hostJob2
         displayName: Host Job 2
@@ -44,5 +51,19 @@ stages:
         - task: PowerShell@2
           inputs:
             targetType: 'inline'
+            script: 'docker ps'
+            pwsh: true
+
+      - job: containerJob2
+        displayName: Container Job 2
+
+        container: ltsc2019
+
+        steps:
+        - task: PowerShell@2
+          inputs:
+            targetType: 'inline'
             script: |
-              docker ps
+              $PSVersionTable
+              Get-ComputerInfo
+            pwsh: true
