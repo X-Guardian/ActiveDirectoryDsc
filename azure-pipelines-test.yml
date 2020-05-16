@@ -9,7 +9,7 @@ trigger:
 resources:
   containers:
   - container: ltsc2019
-    image: mcr.microsoft.com/windows/servercore:ltsc2019
+    image: mcr.microsoft.com/windows/servercore
 
 stages:
   - stage: stage1
@@ -41,7 +41,6 @@ stages:
             script: |
               $PSVersionTable
               Get-ComputerInfo
-            pwsh: true
 
       - job: hostJob2
         displayName: Host Job 2
@@ -67,4 +66,3 @@ stages:
             script: |
               $PSVersionTable
               Get-ComputerInfo
-            pwsh: true
